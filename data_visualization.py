@@ -37,6 +37,13 @@ df = df.apply(pd.to_numeric)
 # Tabulation styling 
 df = df.tail(50)
 df.drop(['dateymd'], axis=1)
+
 # Plotting Histogram
 df.hist()
+plt.show()
+
+#Plotting Box Plot
+#df.plot.box()
+
+plt.boxplot(df['tt'])
 plt.show()
