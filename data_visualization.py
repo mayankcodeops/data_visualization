@@ -1,3 +1,4 @@
+from pandas.core.algorithms import value_counts
 import requests
 import pandas as pd
 
@@ -12,5 +13,20 @@ covid_data = state_wise_json.json()
 covid_data = covid_data['states_daily']
 # normalize json
 covid_data = pd.json_normalize(covid_data)
-print(covid_data)
+
+#making data usable
+df = covid_data
+
+df.date = pd.to_datetime(df.date)
+
+#taking only the confirmed cases Series records
+df = df[df.status == 'Confirmed']
+
+#removing the status column as now all the records are confirmed only
+df.drop('status', axis=1, inplace=True)
+
+#setting the date to be the index column
+df.set_index('date', inplace = True)
+
+
 
