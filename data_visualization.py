@@ -2,7 +2,7 @@ from pandas.core.algorithms import value_counts
 import requests
 import pandas as pd
 import matplotlib.pyplot as plt
-
+import seaborn as sns
 
 COVID_DISTRICT_WISE_URL = 'https://data.covid19india.org/state_district_wise.json'
 COVID_STATE_WISE_DAILY_URL = 'https://api.covid19india.org/states_daily.json'
@@ -36,5 +36,7 @@ df = df.apply(pd.to_numeric)
 
 # Tabulation styling 
 df = df.tail(50)
-
+df.drop(['dateymd'], axis=1)
 # Plotting Histogram
+df.hist()
+plt.show()
