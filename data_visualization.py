@@ -43,7 +43,9 @@ df.hist()
 plt.show()
 
 #Plotting Box Plot
-#df.plot.box()
-
 plt.boxplot(df['tt'])
+plt.show()
+
+#scater plot for showing relationship between number of confirmed cases in two states tt and up
+plt.scatter(df['tt'],df['up'])
 plt.show()
